@@ -14,8 +14,9 @@ client.on('message', msg => {
 });
 
 client.on('message', msg => {
-    if (msg.content === 'жека') {
-        msg.reply('крутой');
+    if (msg.content === 'хуй') {
+        let mem = msg.member;
+        mem.send("ты хуй");
     }
 });
 
