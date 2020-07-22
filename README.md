@@ -1,2 +1,2 @@
 # APOCALYPSE
- Discord game
+ The Discord game
