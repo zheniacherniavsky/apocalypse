@@ -55,6 +55,11 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Soft\apocalypse\modules" />
+    </key>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
