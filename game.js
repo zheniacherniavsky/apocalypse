@@ -17,6 +17,10 @@ client.on('message', msg => {
     if (msg.content === 'хуй') {
         let mem = msg.member;
         mem.send("ты хуй");
+    if (msg.content === 'Леша' || msg.content === 'Устиненко') {
+        msg.reply('урод');
+    if (msg.content === 'жека') {
+        msg.reply('крутой');
     }
 });
 
