@@ -8,8 +8,8 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-    if (msg.content === 'ping' || msg.content === 'пинг') {
-        msg.reply('понг');
+    if (msg.content === 'урод' || msg.content === 'пинг') {
+        msg.reply('моральный');
     }
 });
 
