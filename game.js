@@ -7,16 +7,11 @@ client.on("ready", () => {
   console.log(`${client.user.displayName}`);
 });
 
-client.on("message", (msg) => {
-  if (msg.content === "урод" || msg.content === "пинг") {
-    msg.reply("моральный");
-  }
-});
-
-client.on("message", (msg) => {
-  if (msg.content === "хуй") {
-    msg.edit("сам хуй");
-  }
+client.on('message', msg => {
+    if (msg.content === 'хуй') {
+        let mem = msg.member;
+        mem.send("ты хуй");
+    }
 });
 
 client.login("NzM1NDQ0OTkxODc0MTcwOTIx.XxgXNg.l1pJipDMPMfGtwoaNK0iObIQDU8");
