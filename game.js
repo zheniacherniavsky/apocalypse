@@ -13,4 +13,10 @@ client.on('message', msg => {
     }
 });
 
+client.on('message', msg => {
+    if (msg.content === 'жека') {
+        msg.reply('крутой');
+    }
+});
+
 client.login('NzM1NDQ0OTkxODc0MTcwOTIx.XxgXNg.l1pJipDMPMfGtwoaNK0iObIQDU8');
