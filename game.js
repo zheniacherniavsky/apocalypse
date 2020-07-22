@@ -1,39 +1,46 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const timer = require('./modules/timer.js');
+const DATA = require('./modules/data.js');
+
+let playersCount = null;
+let playerHandler = false;
+let playersArr = [];
+let form = "\tИгра АПОКАЛИПСИС | НАЧАЛО ИГРЫ\nНапиши 'я' чтобы зарегистрироваться!";
 
 client.on('ready', () => {
     console.log(`Bot was started`);
 });
-
-let form = " \tИгра АПОКАЛИПСИС | НАЧАЛО ИГРЫ " +
-    "\nНачните игру, нажми на реакцию!" +
-    "\t\t\nУ тебя 15 секунд!";
-
-let playersCount = null;
 
 client.on('message', msg => {
     if (msg.content === '!ИГРА')
     {
         let gameChat = msg.channel;
         gameChat.send(form);
+        playerHandler = false;
+        timer(5, msg);
 
-        // Create a reaction collector
-        const filter = (reaction, user) => reaction.emoji.name === '👌' && user.id === msg.author.id;
-        msg.react("👌");
-        const collector = msg.createReactionCollector(filter, { time: 15000 });
-        collector.on('collect', r => console.log(`Collected ${r.emoji.name}`));
-        collector.on('end', collected => {
-            gameChat.send(`Зарегистрированно ${collected.size} игроков.`);
-            playersCount = collected.size;
-        });
+        setTimeout( () => {
+            playerHandler = false;
+            console.log(`players: ${playersArr}\nplayers_count: ${playersArr.length}`);
+            playersArr.forEach( player => player.send("ты лох блять"));
+        }, 5000);
     }
 });
 
-client.on("message", (msg) => {
-    if (msg.content === "опа") {
-        timer(15, msg);
+client.on("message", msg => {
+    if (msg.content === "я" && playerHandler) {
+        if(!playersArr.includes(msg.author)) {
+            playersCount++;
+            playersArr.push(msg.author);
+        }
     }
+});
+
+// logs
+
+client.on("message", msg => {
+    console.log(msg.content);
 });
 
 client.login("NzM1NDQ0OTkxODc0MTcwOTIx.XxgXNg.l1pJipDMPMfGtwoaNK0iObIQDU8");
