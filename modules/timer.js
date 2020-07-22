@@ -6,12 +6,17 @@ function timer(time, msg) {
         let timeout=client.setInterval(() => {
             time -= 5;
             if(time > 5)
+            {
                 msg.edit(`Осталось: ${time} секунд.`);
-            else if (time == 0) {
+            }
+            else if (time == 0)
+            {
                 msg.edit("Время вышло :(");
             }
             else
+            {
                 msg.edit(`Осталось: ${time} секунд. Поспеши!!!`);
+            }
         }, 5000);
 
         setTimeout(()=> {
