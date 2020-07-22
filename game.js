@@ -17,9 +17,8 @@ client.on('message', msg => {
     {
         let gameChat = msg.channel;
         gameChat.send(form);
-        playerHandler = false;
+        playerHandler = true;
         timer(5, msg);
-
         setTimeout( () => {
             playerHandler = false;
             console.log(`players: ${playersArr}\nplayers_count: ${playersArr.length}`);
@@ -38,7 +37,6 @@ client.on("message", msg => {
 });
 
 // logs
-
 client.on("message", msg => {
     console.log(msg.content);
 });
