@@ -6,9 +6,9 @@ function timer(time, msg) {
         let timeout=client.setInterval(() => {
             time -= 5;
             if(time > 5)
-                msg.edit(`Осталось: ${time} секунд.`)
+                msg.edit(`Осталось: ${time} секунд.`);
             else if (time == 0) {
-                // Пишет что время вышло и ждёт 2 секунды
+                msg.edit("Время вышло :(");
             }
             else
                 msg.edit(`Осталось: ${time} секунд. Поспеши!!!`);
