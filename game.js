@@ -16,6 +16,8 @@ client.on('message', msg => {
 client.on('message', msg => {
     if (msg.content === 'Леша' || msg.content === 'Устиненко') {
         msg.reply('урод');
+    if (msg.content === 'жека') {
+        msg.reply('крутой');
     }
 });
 
