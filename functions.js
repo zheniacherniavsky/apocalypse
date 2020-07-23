@@ -1,7 +1,6 @@
         //  ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ //
 
 let playersArr = [];
-
 const Discord = require("discord.js");
 
         // МОДУЛИ //
@@ -19,6 +18,10 @@ function test(bot, msg , args)
 {
     msg.channel.send('Понг!');
 }
+
+
+
+
 
 function apocalypse(bot, msg, args)
 {
@@ -45,6 +48,27 @@ function auth(bot, msg, args)
         }
     }
 }
+
+
+
+function mute(bot, msg, args)
+{
+    let chennel = msg.member.voice.channel;
+    chennel.join();
+
+    // let voice = msg.member.voice;
+    // voice.kick("adawd");
+    let userClient = msg.guild.member(playersArr[0]);
+    let voice = userClient.voice;
+    // voice.setMute(true);
+}
+
+function kick(bot, msg, args)
+{
+    let channel = msg.member.voice.channel;
+    channel.leave();
+}
+
         // СПИСОК КОММАНД //
 
 let commandList = [
@@ -55,7 +79,11 @@ let commandList = [
 
         // апокалипсис
     {name: "апокалипсис", out: apocalypse, about: "Ну тупа на тест"},
-    {name: "я", out: auth, about: "Авторизация"}
+    {name: "я", out: auth, about: "Авторизация"},
+
+        // бот
+    {name: "mute", out: mute, about: "ВОВА НАПИШИ"},
+    {name: "kick", out: kick, about: "ВОВА НАПИШИ"}
 
 ]
 

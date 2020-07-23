@@ -34,22 +34,4 @@ bot.on('message', (msg) => {
     }
 });
 
-bot.on("message", (msg) => {
-    if (msg.content === "mute") {
-      let chennel = msg.member.voice.channel;
-      chennel.join();
-      
-      // let voice = msg.member.voice;
-      // voice.kick("adawd");
-      let userClient = msg.guild.member(playersArr[0]);
-      let voice = userClient.voice;
-      // voice.setMute(true);
-      console.log(client.optionsw);
-      
-  
-    } else if (msg.content === "kick") {
-      let chennel = msg.member.voice.channel;
-      chennel.leave();
-    }
-  });
 bot.login(token);
