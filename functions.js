@@ -53,20 +53,26 @@ function auth(bot, msg, args)
 
 function mute(bot, msg, args)
 {
-    let chennel = msg.member.voice.channel;
-    chennel.join();
-
-    // let voice = msg.member.voice;
-    // voice.kick("adawd");
+    msg.member.voice.channel.join();
     let userClient = msg.guild.member(playersArr[0]);
     let voice = userClient.voice;
-    // voice.setMute(true);
+    voice.setMute(true);
 }
 
 function kick(bot, msg, args)
 {
-    let channel = msg.member.voice.channel;
-    channel.leave();
+    msg.member.voice.channel.leave();
+}
+
+function createRole (bot, msg, args){
+    msg.guild.roles.create({data: {
+        name: 'Test',
+        color: 'BLUE',
+      }});
+}
+
+function removeRole (bot, msg, args){
+   
 }
 
         // СПИСОК КОММАНД //
@@ -82,8 +88,12 @@ let commandList = [
     {name: "я", out: auth, about: "Авторизация"},
 
         // бот
-    {name: "mute", out: mute, about: "ВОВА НАПИШИ"},
-    {name: "kick", out: kick, about: "ВОВА НАПИШИ"}
+    {name: "mute", out: mute, about: "мут на игрока"},
+    {name: "kick", out: kick, about: "отключение от канала"},
+
+        //создание роли
+    {name: "create", out: createRole, about: "создание новой роли"},
+    {name: "remove", out: removeRole, about: "удаление роил"}
 
 ]
 
