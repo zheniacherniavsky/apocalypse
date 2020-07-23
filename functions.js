@@ -6,6 +6,7 @@ const Discord = require("discord.js");
 
         // МОДУЛИ //
 
+let userTimer = require("./modules/UserTimer.js");
 let timer = require("./modules/timer.js");
 
         // ФЛАЖКИ //
@@ -22,18 +23,27 @@ function test(bot, msg , args)
 function apocalypse(bot, msg, args)
 {
     let playersCount = null;
-    let form = "\tИгра АПОКАЛИПСИС | НАЧАЛО ИГРЫ\nНапиши 'я' чтобы зарегистрироваться! Нажми на :grey_question: чтобы узнать правила.";
+    let form = "\tИгра АПОКАЛИПСИС | НАЧАЛО ИГРЫ\nНапиши '!я' чтобы зарегистрироваться! Нажми на :grey_question: чтобы узнать правила.";
 
     let gameChat = msg.channel;
     gameChat.send(form);
     playerHandler = true; // Делаем возможность регистрации
 
-    timer(5, msg);
+    timer(10, msg);
     setTimeout( () => {
         playerHandler = false;
         console.log(`players: ${playersArr}\nplayers_count: ${playersArr.length}`);
         playersArr.forEach( player => player.send("Ты зарегистрировался, теперь я буду слать тебе личные сообщения :cowboy:"));
-    }, 5000);
+    }, 10000);
+}
+
+function auth(bot, msg, args)
+{
+    if (playerHandler) {
+        if(!playersArr.includes(msg.author)) {
+            playersArr.push(msg.author);
+        }
+    }
 }
         // СПИСОК КОММАНД //
 
@@ -41,11 +51,11 @@ let commandList = [
 
         // служебные комманды
     {name: "пинг", out: test, about: "Проверка отзыва"},
-    {name: "таймер", out: timer, about: "Таймер"},
+    {name: "таймер", out: userTimer, about: "Таймер"},
 
         // апокалипсис
     {name: "апокалипсис", out: apocalypse, about: "Ну тупа на тест"},
-
+    {name: "я", out: auth, about: "Авторизация"}
 
 ]
 
