@@ -19,7 +19,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48e6ce10-0e88-40e3-8899-a0725817c9e5" name="Default Changelist" comment="" />
+    <list default="true" id="48e6ce10-0e88-40e3-8899-a0725817c9e5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/bot.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configuration.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/timer.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/timer.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,6 +41,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="zheka" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1f2NZKYthXEzLLJywEZjHYSxEsc" />
@@ -87,5 +99,16 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="176" y="87" key="MergeDialog" timestamp="1595485408055">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="176" y="87" key="MergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595485408055" />
+    <state x="740" y="232" key="git4idea.branch.GitSmartOperationDialog" timestamp="1595485342198">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="232" key="git4idea.branch.GitSmartOperationDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595485342198" />
   </component>
 </project>

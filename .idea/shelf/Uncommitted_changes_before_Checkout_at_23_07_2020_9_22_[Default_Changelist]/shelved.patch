@@ -1,0 +1,84 @@
+Index: game.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const Discord = require('discord.js');\r\nconst client = new Discord.Client();\r\n\r\nclient.on('ready', () => {\r\n    console.log(`Bot was started`);\r\n});\r\n\r\nlet form = \" \\tИгра АПОКАЛИПСИС | НАЧАЛО ИГРЫ \" +\r\n\"\\nНачните игру, нажми на реакцию!\" +\r\n\"\\t\\t\\nУ тебя 15 секунд!\";\r\n\r\nlet playersCount = null;\r\n\r\nclient.on('message', msg => {\r\n    if (msg.content === '!ИГРА')\r\n    {\r\n        gameChat = msg.channel;\r\n        gameChat.send(form);\r\n\r\n        // Create a reaction collector\r\n        const filter = (reaction, user) => reaction.emoji.name === '\uD83D\uDC4C' && user.id === msg.author.id;\r\n        msg.react(\"\uD83D\uDC4C\");\r\n        const collector = msg.createReactionCollector(filter, { time: 15000 });\r\n        collector.on('collect', r => console.log(`Collected ${r.emoji.name}`));\r\n        collector.on('end', collected => {\r\n                gameChat.send(`Зарегистрированно ${collected.size} игроков.`);\r\n                playersCount = collected.size;\r\n            });\r\n    }\r\n});\r\n\r\nclient.login('NzM1NDQ0OTkxODc0MTcwOTIx.XxgXNg.l1pJipDMPMfGtwoaNK0iObIQDU8');
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- game.js	(revision fc6e5efe2723346f26460f037cd3287b86684dbd)
++++ game.js	(date 1595485269589)
+@@ -2,31 +2,9 @@
+ const client = new Discord.Client();
+ 
+ client.on('ready', () => {
+-    console.log(`Bot was started`);
++    console.log(`Bot was started in Zheka brunch`);
+ });
+ 
+-let form = " \tИгра АПОКАЛИПСИС | НАЧАЛО ИГРЫ " +
+-"\nНачните игру, нажми на реакцию!" +
+-"\t\t\nУ тебя 15 секунд!";
+-
+-let playersCount = null;
+-
+-client.on('message', msg => {
+-    if (msg.content === '!ИГРА')
+-    {
+-        gameChat = msg.channel;
+-        gameChat.send(form);
+ 
+-        // Create a reaction collector
+-        const filter = (reaction, user) => reaction.emoji.name === '👌' && user.id === msg.author.id;
+-        msg.react("👌");
+-        const collector = msg.createReactionCollector(filter, { time: 15000 });
+-        collector.on('collect', r => console.log(`Collected ${r.emoji.name}`));
+-        collector.on('end', collected => {
+-                gameChat.send(`Зарегистрированно ${collected.size} игроков.`);
+-                playersCount = collected.size;
+-            });
+-    }
+-});
+ 
+ client.login('NzM1NDQ0OTkxODc0MTcwOTIx.XxgXNg.l1pJipDMPMfGtwoaNK0iObIQDU8');
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"BranchesTreeState\">\r\n    <expand>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n    </expand>\r\n    <select />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"48e6ce10-0e88-40e3-8899-a0725817c9e5\" name=\"Default Changelist\" comment=\"\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"package.json\" />\r\n        <option value=\"JavaScript File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1f2NZKYthXEzLLJywEZjHYSxEsc\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"TERMINAL_CUSTOM_COMMANDS_GOT_IT\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\r\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\r\n    <property name=\"node.js.path.for.package.eslint\" value=\"project\" />\r\n    <property name=\"node.js.path.for.package.tslint\" value=\"project\" />\r\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\r\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\r\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\r\n  </component>\r\n  <component name=\"SvnConfiguration\">\r\n    <configuration />\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"48e6ce10-0e88-40e3-8899-a0725817c9e5\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1595412282264</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1595412282264</updated>\r\n      <workItem from=\"1595412288784\" duration=\"9793000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"2\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/workspace.xml	(revision fc6e5efe2723346f26460f037cd3287b86684dbd)
++++ .idea/workspace.xml	(date 1595485256344)
+@@ -19,7 +19,10 @@
+     <select />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="48e6ce10-0e88-40e3-8899-a0725817c9e5" name="Default Changelist" comment="" />
++    <list default="true" id="48e6ce10-0e88-40e3-8899-a0725817c9e5" name="Default Changelist" comment="">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/game.js" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -34,6 +37,11 @@
+     </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="vova" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="ProjectId" id="1f2NZKYthXEzLLJywEZjHYSxEsc" />
+@@ -82,5 +90,6 @@
+         </entry>
+       </map>
+     </option>
++    <option name="oldMeFiltersMigrated" value="true" />
+   </component>
+ </project>
+\ No newline at end of file
