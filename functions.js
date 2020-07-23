@@ -1,3 +1,7 @@
+        //  ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ //
+
+let playersArr = [];
+
 const Discord = require("discord.js");
 
         // МОДУЛИ //
@@ -18,7 +22,6 @@ function test(bot, msg , args)
 function apocalypse(bot, msg, args)
 {
     let playersCount = null;
-    let playersArr = [];
     let form = "\tИгра АПОКАЛИПСИС | НАЧАЛО ИГРЫ\nНапиши 'я' чтобы зарегистрироваться! Нажми на :grey_question: чтобы узнать правила.";
 
     let gameChat = msg.channel;
@@ -32,17 +35,6 @@ function apocalypse(bot, msg, args)
         playersArr.forEach( player => player.send("Ты зарегистрировался, теперь я буду слать тебе личные сообщения :cowboy:"));
     }, 5000);
 }
-// команды для игры апокалипсис
-function auth(bot, msg, args, playersArr)
-{
-    if (playerHandler) {
-        if(!playersArr.includes(msg.author)) {
-            playersArr.push(msg.author);
-        }
-    }
-}
-
-
         // СПИСОК КОММАНД //
 
 let commandList = [
@@ -53,8 +45,7 @@ let commandList = [
 
         // апокалипсис
     {name: "апокалипсис", out: apocalypse, about: "Ну тупа на тест"},
-        // комманды для игры апокалипсис:
-        {name: "я", out: auth(bot, msg, args, playersArr), about: "Регистрация игроков"}
+
 
 ]
 
