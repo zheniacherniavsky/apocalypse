@@ -50,6 +50,7 @@ function apocalypse(bot, msg, args)
             }, 60000);
         }
         gameChat.send("Никто не захотел со мной играть :sob:");
+        leaveBot(msg);
     }, 10000)
 }
 
@@ -82,17 +83,15 @@ function firstStep(gameChat,msg){
 function joinBot(msg){
     msg.member.voice.channel.join();
 }
+function leaveBot(msg){
+    msg.member.voice.channel.leave();
+}
 
 function mute(bot, msg, args)
 {
     let userClient = msg.guild.member(playersArr[0]);
     let voice = userClient.voice;
     voice.setMute(true);
-}
-
-function kick(bot, msg, args)
-{
-    msg.member.voice.channel.leave();
 }
 
 function createRole (bot, msg, args){
@@ -131,7 +130,6 @@ let commandList = [
 
         // бот
     {name: "mute", out: mute, about: "мут на игрока"},
-    {name: "kick", out: kick, about: "отключение от канала"},
 
         //создание роли
     {name: "create", out: createRole, about: "создание новой роли"},
