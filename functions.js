@@ -45,6 +45,7 @@ function apocalypse(bot, msg, args)
         timer(60, msg, true);
         setTimeout(() => {
             gameChat.send("Начинается первый ход!");
+            gameChat.send();
             // вызов функции первого хода
             // В функции должны передаваться массив игроков, игровой чат
             // Так же нужен функционал мута игроков по айди (Добавить в функцию mute аргумент player_id)
@@ -70,6 +71,10 @@ function auth(bot, msg, args)
             msg.reply(answer[Math.floor(Math.random() * answer.length)] + " Всего игроков: " + playersArr.length + ".");
         }
     }
+}
+
+function firstStep(gameChat){
+
 }
 
 function joinBot(msg){
