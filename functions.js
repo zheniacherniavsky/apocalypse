@@ -20,7 +20,12 @@ let playerHandler = false;
 
 function apocalypse(bot, msg, args)
 {
-    joinBot(msg)
+    try {
+        joinBot(msg)
+    } catch (e) {
+        msg.channel.send("Войди в голосовой чат для запуска игры.");
+        return;
+    }
     let gameChat = msg.channel;
     gameChat.send(hello());
     playerHandler = true; // Делаем возможность регистрации
@@ -29,14 +34,14 @@ function apocalypse(bot, msg, args)
     setTimeout( () => {
         playerHandler = false;
         if(playersArr.length != 0) {
-            playersArr.forEach( player => player.send(data.createCard()));
+            playersArr.forEach( player => player.send(data.createCard(player.username)));
 
-            gameChat.send("\nРегистрация завершена :clipboard:. Я вам в личные сообщения отправил карточки :credit_card:. " +
-                "На ознакомление с ними я даю вам одну минуту. :alarm_clock:" +
-                "\n\nСписок тех, кто играет:\n");
+            gameChat.send("**Регистрация завершена** :clipboard:. Я вам в *личные сообщения* отправил карточки :credit_card:. " +
+                "На ознакомление с ними я даю вам **одну минуту**. :alarm_clock:" +
+                "\n\n*Список тех, кто играет:*\n");
 
             playersArr.forEach( player => {
-                gameChat.send("-\t" + player.mentions + " " + emoji());
+                gameChat.send("-\t" + player.username + " " + emoji());
             });
             gameChat.send("\n- - - - - - - - - - - - - - - - -\n");
 
@@ -47,10 +52,13 @@ function apocalypse(bot, msg, args)
                 // вызов функции первого хода
                 // В функции должны передаваться массив игроков, игровой чат
                 // Так же нужен функционал мута игроков по айди (Добавить в функцию mute аргумент player_id)
+                firstStep(gameChat, msg);
             }, 60000);
         }
-        gameChat.send("Никто не захотел со мной играть :sob:");
-        leaveBot(msg);
+        else {
+            gameChat.send("Никто не захотел со мной играть :sob:");
+            leaveСhannel(msg);
+        }
     }, 10000)
 }
 
@@ -72,18 +80,21 @@ function auth(bot, msg, args)
     }
 }
 
-function firstStep(gameChat,msg){
-    gameChat.send(accident[Math.floor(Math.random() * accident.length)]);
+function firstStep(gameChat,msg)
+{
+    gameChat.send(createEmbed(arrRandom(accident)));
     timer(60,msg,true);
     setTimeout(()=>{
         gameChat.send("Начинается второй ход :smiling_imp:");
     },60000);
 }
 
-function joinBot(msg){
+function joinBot(msg)
+{
     msg.member.voice.channel.join();
 }
-function leaveBot(msg){
+function leaveСhannel(msg)
+{
     msg.member.voice.channel.leave();
 }
 
@@ -117,12 +128,29 @@ function hello() {
         .setDescription('Пиши **!я** чтобы зарегистрироваться!')
     return embed;
 }
+
+function createEmbed(accident)
+{
+    const embed = new Discord.MessageEmbed()
+        .setColor('#8b0000')
+        .setTitle(accident.name)
+        .setDescription(accident.description)
+        .setImage(accident.image)
+    return embed;
+}
+
+function getCard(bot, msg, args)
+{
+    msg.author.send(data.createCard(msg.author.username));
+}
+
         // СПИСОК КОММАНД //
 
 let commandList = [
 
         // служебные комманды
     {name: "таймер", out: userTimer, about: "Таймер"},
+    {name: "карта", out: getCard, about: "Проверка карточки"},
 
         // апокалипсис
     {name: "апокалипсис", out: apocalypse, about: "Ну тупа на тест"},
@@ -138,33 +166,3 @@ let commandList = [
 ]
 
 module.exports.list = commandList;
-
-//
-// let playersCount = null;
-// let playerHandler = false;
-// let playersArr = [];
-// let form = "\tИгра АПОКАЛИПСИС | НАЧАЛО ИГРЫ\nНапиши 'я' чтобы зарегистрироваться! Нажми на :grey_question: чтобы узнать правила.";
-//
-// bot.on('message', msg => {
-//     if (msg.content === '!ИГРА')
-//     {
-//
-//
-//
-//         timer(5, msg);
-//         setTimeout( () => {
-//             playerHandler = false;
-//             console.log(`players: ${playersArr}\nplayers_count: ${playersArr.length}`);
-//             playersArr.forEach( player => player.send("Ты зарегистрировался, теперь я буду слать тебе личные сообщения :cowboy:"));
-//         }, 5000);
-//     }
-// });
-//
-// bot.on("message", msg => {
-//     if (msg.content === "я" && playerHandler) {
-//         if(!playersArr.includes(msg.author)) {
-//             playersCount++;
-//             playersArr.push(msg.author);
-//         }
-//     }
-// });
