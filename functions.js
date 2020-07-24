@@ -7,8 +7,11 @@ const Discord = require("discord.js");
 
 let userTimer = require("./modules/UserTimer.js");
 let timer = require("./modules/timer.js");
-let createCard = require("./modules/data");
+let data = require("./modules/data");
 let emoji = require("./modules/emoji");
+
+let createCard = data.createCard();
+let accident = data.accident;
 
         // ФЛАЖКИ //
 
