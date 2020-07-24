@@ -22,6 +22,7 @@ function test(bot, msg , args)
 
 function apocalypse(bot, msg, args)
 {
+    joinBot(msg)
     let playersCount = null;
     let form = "\tИгра АПОКАЛИПСИС | НАЧАЛО ИГРЫ\nНапиши '!я' чтобы зарегистрироваться!";
 
@@ -29,7 +30,7 @@ function apocalypse(bot, msg, args)
     gameChat.send(form);
     playerHandler = true; // Делаем возможность регистрации
 
-    timer(10, msg);
+    timer(10, msg, true);
     setTimeout( () => {
         playerHandler = false;
         console.log(`players: ${playersArr}\nplayers_count: ${playersArr.length}`);
@@ -71,9 +72,12 @@ function auth(bot, msg, args)
     }
 }
 
+function joinBot(msg){
+    msg.member.voice.channel.join();
+}
+
 function mute(bot, msg, args)
 {
-    msg.member.voice.channel.join();
     let userClient = msg.guild.member(playersArr[0]);
     let voice = userClient.voice;
     voice.setMute(true);
