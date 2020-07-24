@@ -10,7 +10,6 @@ let timer = require("./modules/timer.js");
 let data = require("./modules/data");
 let emoji = require("./modules/emoji");
 
-let createCard = data.createCard();
 let accident = data.accident;
 
         // ФЛАЖКИ //
@@ -37,7 +36,7 @@ function apocalypse(bot, msg, args)
     setTimeout( () => {
         playerHandler = false;
         console.log(`players: ${playersArr}\nplayers_count: ${playersArr.length}`);
-        playersArr.forEach( player => player.send(createCard()));
+        playersArr.forEach( player => player.send(data.createCard()));
 
         gameChat.send("\nРегистрация завершена :clipboard:. Я вам в личные сообщения отправил карточки :credit_card:. " +
             "На ознакомление с ними я даю вам одну минуту. :alarm_clock:" +
@@ -51,8 +50,8 @@ function apocalypse(bot, msg, args)
         timer(60, msg, true);
         setTimeout(() => {
             gameChat.send("Начинается первый ход!");
-            gameChat.send();
-            // вызов функции первого хода
+            firstStep(gameChat,msg);
+
             // В функции должны передаваться массив игроков, игровой чат
             // Так же нужен функционал мута игроков по айди (Добавить в функцию mute аргумент player_id)
             //
@@ -78,8 +77,12 @@ function auth(bot, msg, args)
     }
 }
 
-function firstStep(gameChat){
-
+function firstStep(gameChat,msg){
+    gameChat.send(accident[Math.floor(Math.random() * accident.length)]);
+    timer(60,msg,true);
+    setTimeout(()=>{
+        gameChat.send("Начинается второй ход :smiling_imp:");
+    },60000);
 }
 
 function joinBot(msg){
