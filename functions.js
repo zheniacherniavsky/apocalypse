@@ -8,6 +8,7 @@ const Discord = require("discord.js");
 let userTimer = require("./modules/UserTimer.js");
 let timer = require("./modules/timer.js");
 let createCard = require("./modules/data");
+let emoji = require("./modules/emoji");
 
         // ФЛАЖКИ //
 
@@ -23,7 +24,6 @@ function test(bot, msg , args)
 function apocalypse(bot, msg, args)
 {
     joinBot(msg)
-    let playersCount = null;
     let form = "\tИгра АПОКАЛИПСИС | НАЧАЛО ИГРЫ\nНапиши '!я' чтобы зарегистрироваться!";
 
     let gameChat = msg.channel;
@@ -36,32 +36,34 @@ function apocalypse(bot, msg, args)
         console.log(`players: ${playersArr}\nplayers_count: ${playersArr.length}`);
         playersArr.forEach( player => player.send(createCard()));
 
-        gameChat.send("Регистрация завершена :clipboard:. Я вам в личные сообщения отправил карточки :credit_card:. " +
+        gameChat.send("\nРегистрация завершена :clipboard:. Я вам в личные сообщения отправил карточки :credit_card:. " +
             "На ознакомление с ними я даю вам одну минуту. :alarm_clock:" +
-            "\nСписок тех, кто играет:\n");
+            "\n\nСписок тех, кто играет:\n");
+
         playersArr.forEach( player => {
-            gameChat.send(player.username + " " + getRandomFromArr(emoji));
+            gameChat.send("-\t" + player.username + " " + emoji());
         });
+        gameChat.send("\n- - - - - - - - - - - - - - - - - -\n");
+
         timer(60, msg, true);
         setTimeout(() => {
-            gameChat.send("Начинается первый ход!");
+            gameChat.send("\nНачинается первый ход!");
             // вызов функции первого хода
             // В функции должны передаваться массив игроков, игровой чат
             // Так же нужен функционал мута игроков по айди (Добавить в функцию mute аргумент player_id)
             //
         }, 60000);
-
     }, 10000)
 }
 
 function auth(bot, msg, args)
 {
-    let answer = ["я тебя зарегистрировал :dizzy:",
-        "новый игрок :hatching_chick:",
-        "проиграет первым ahaha :poop:",
-        "ну тупа залетел в игру :merman:",
-        "не берите его в бункер ПЖ :panda_face:",
-        "добрый вечер :sparkling_heart:"
+    let answer = ["я тебя зарегистрировал " + emoji(),
+        "новый игрок " + emoji(),
+        "проиграет первым ahaha " + emoji(),
+        "ну тупа залетел в игру " + emoji(),
+        "не берите его в бункер ПЖ " + emoji(),
+        "добрый вечер " + emoji()
     ];
 
     if (playerHandler) {
@@ -99,7 +101,7 @@ function removeRole (bot, msg, args){
    
 }
 
-function getRandomFromArr(arr)
+function arrRandom(arr)
 {
     return arr[Math.floor(Math.random()*arr.length)];
 }
