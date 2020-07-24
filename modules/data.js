@@ -371,7 +371,7 @@ let card2 = [
 function createCard()
 {
     let age = Math.floor(Math.random()*80);
-    let sex = Math.floor(Math.random());
+    let sex = Math.round(Math.random());
 
     let card = "- - - - - - КАРТОЧКА - - - - - -\n";
     card += "ИМЯ:______________Женя\n";

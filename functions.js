@@ -2,17 +2,6 @@
 
 let playersArr = [];
 const Discord = require("discord.js");
-let emoji = [
-    ":eyes:",
-    ":watermelon:",
-    ":cowboy:",
-    ":innocent:",
-    ":partying_face:",
-    ":heart_eyes:",
-    ":brain:",
-    ":alien:",
-    ":space_invader:"
-];
 
         // МОДУЛИ //
 
@@ -30,10 +19,6 @@ function test(bot, msg , args)
 {
     msg.channel.send('Понг!');
 }
-
-
-
-
 
 function apocalypse(bot, msg, args)
 {
@@ -54,7 +39,7 @@ function apocalypse(bot, msg, args)
             "На ознакомление с ними я даю вам одну минуту. :alarm_clock:" +
             "\nСписок тех, кто играет:\n");
         playersArr.forEach( player => {
-            gameChat.send(player.name + " " + getRandomFromArr(emoji));
+            gameChat.send(player.username + " " + getRandomFromArr(emoji));
         });
         timer(60, msg, true);
         setTimeout(() => {
