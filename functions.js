@@ -10,8 +10,7 @@ let timer = require("./modules/timer.js");
 let data = require("./modules/data");
 let emoji = require("./modules/emoji");
 
-let createCard = data.createCard();
-let accident = data.accident;
+let accident = data.accident; // массив трагедий
 
         // ФЛАЖКИ //
 
@@ -19,44 +18,39 @@ let playerHandler = false;
 
         // КОМАНДЫ //
 
-function test(bot, msg , args)
-{
-    msg.channel.send('Понг!');
-}
-
 function apocalypse(bot, msg, args)
 {
     joinBot(msg)
-    let form = "\tИгра АПОКАЛИПСИС | НАЧАЛО ИГРЫ\nНапиши '!я' чтобы зарегистрироваться!";
 
     let gameChat = msg.channel;
-    gameChat.send(form);
+    gameChat.send(hello());
     playerHandler = true; // Делаем возможность регистрации
 
     timer(10, msg, true);
     setTimeout( () => {
         playerHandler = false;
-        console.log(`players: ${playersArr}\nplayers_count: ${playersArr.length}`);
-        playersArr.forEach( player => player.send(createCard()));
+        if(playersArr.length != 0) {
+            playersArr.forEach( player => player.send(data.createCard()));
 
-        gameChat.send("\nРегистрация завершена :clipboard:. Я вам в личные сообщения отправил карточки :credit_card:. " +
-            "На ознакомление с ними я даю вам одну минуту. :alarm_clock:" +
-            "\n\nСписок тех, кто играет:\n");
+            gameChat.send("\nРегистрация завершена :clipboard:. Я вам в личные сообщения отправил карточки :credit_card:. " +
+                "На ознакомление с ними я даю вам одну минуту. :alarm_clock:" +
+                "\n\nСписок тех, кто играет:\n");
 
-        playersArr.forEach( player => {
-            gameChat.send("-\t" + player.username + " " + emoji());
-        });
-        gameChat.send("\n- - - - - - - - - - - - - - - - - -\n");
+            playersArr.forEach( player => {
+                gameChat.send("-\t" + player.mentions + " " + emoji());
+            });
+            gameChat.send("\n- - - - - - - - - - - - - - - - -\n");
 
-        timer(60, msg, true);
-        setTimeout(() => {
-            gameChat.send("Начинается первый ход!");
-            gameChat.send();
-            // вызов функции первого хода
-            // В функции должны передаваться массив игроков, игровой чат
-            // Так же нужен функционал мута игроков по айди (Добавить в функцию mute аргумент player_id)
-            //
-        }, 60000);
+            timer(60, msg, true);
+            setTimeout(() => {
+                gameChat.send("Начинается первый ход!" +
+                    "\nУзнайте про катастрофу!\n");
+                // вызов функции первого хода
+                // В функции должны передаваться массив игроков, игровой чат
+                // Так же нужен функционал мута игроков по айди (Добавить в функцию mute аргумент player_id)
+            }, 60000);
+        }
+        gameChat.send("Никто не захотел со мной играть :sob:");
     }, 10000)
 }
 
@@ -73,7 +67,7 @@ function auth(bot, msg, args)
     if (playerHandler) {
         if(!playersArr.includes(msg.author)) {
             playersArr.push(msg.author);
-            msg.reply(answer[Math.floor(Math.random() * answer.length)] + " Всего игроков: " + playersArr.length + ".");
+            msg.reply(arrRandom(answer) + "\nВсего игроков: " + playersArr.length + ".");
         }
     }
 }
@@ -114,12 +108,18 @@ function arrRandom(arr)
     return arr[Math.floor(Math.random()*arr.length)];
 }
 
+function hello() {
+    const embed = new Discord.MessageEmbed()
+        .setColor('#8b0000')
+        .setTitle('АПОКАЛИПСИС :boom::boom::boom:')
+        .setDescription('Пиши **!я** чтобы зарегистрироваться!')
+    return embed;
+}
         // СПИСОК КОММАНД //
 
 let commandList = [
 
         // служебные комманды
-    {name: "пинг", out: test, about: "Проверка отзыва"},
     {name: "таймер", out: userTimer, about: "Таймер"},
 
         // апокалипсис

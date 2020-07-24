@@ -23,7 +23,7 @@ function timer(time, msg, delete_message = false) {
         setTimeout(()=> {
             clearInterval(timeout);
             if(delete_message) msg.delete();
-        },time*1000+3000);
+        },time*1000/*+3000*/);
     });
 }
 
