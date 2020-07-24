@@ -21,7 +21,6 @@ let playerHandler = false;
 function apocalypse(bot, msg, args)
 {
     joinBot(msg)
-
     let gameChat = msg.channel;
     gameChat.send(hello());
     playerHandler = true; // Делаем возможность регистрации
@@ -72,8 +71,12 @@ function auth(bot, msg, args)
     }
 }
 
-function firstStep(gameChat){
-
+function firstStep(gameChat,msg){
+    gameChat.send(accident[Math.floor(Math.random() * accident.length)]);
+    timer(60,msg,true);
+    setTimeout(()=>{
+        gameChat.send("Начинается второй ход :smiling_imp:");
+    },60000);
 }
 
 function joinBot(msg){
