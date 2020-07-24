@@ -28,4 +28,4 @@
   
 ### Рофл фотки
 
-![NODE.JS | DISCORD.JS](https://github.com/zheniacherniavsky/apocalypse/blob/master/img/rofl1.png)
+![NODE.JS | DISCORD.JS](https://github.com/zheniacherniavsky/apocalypse/blob/master/img/rofl1.jpg)
