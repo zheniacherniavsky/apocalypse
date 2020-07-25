@@ -144,6 +144,11 @@ function getCard(bot, msg, args)
     msg.author.send(data.createCard(msg.author.username));
 }
 
+function ping(bot, msg, args)
+{
+    msg.channel.send("понг!");
+}
+
         // СПИСОК КОММАНД //
 
 let commandList = [
@@ -151,6 +156,7 @@ let commandList = [
         // служебные комманды
     {name: "таймер", out: userTimer, about: "Таймер"},
     {name: "карта", out: getCard, about: "Проверка карточки"},
+    {name: "пинг", out: ping, about: "проверка отзыва бота"},
 
         // апокалипсис
     {name: "апокалипсис", out: apocalypse, about: "Ну тупа на тест"},

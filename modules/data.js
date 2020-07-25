@@ -46,6 +46,7 @@ let accident = [
             "\n*Разрушения на поверхности: 32%*.",
         "image" : "https://www.mirf.ru/wp-content/uploads/2017/08/terminator-genisys-028.jpg"
     }
+
     // Вова доделай катастрофы вот по этим примерам ок да
     // Картинки красивые вставляй
 
