@@ -80,13 +80,30 @@ function auth(bot, msg, args)
     }
 }
 
-function firstStep(gameChat,msg)
+function firstStep(gameChat, msg)
 {
     gameChat.send(createEmbed(arrRandom(accident)));
     timer(60,msg,true);
     setTimeout(()=>{
-        gameChat.send("Начинается второй ход :smiling_imp:");
+       secondStep(gameChat, msg);
     },60000);
+}
+
+function secondStep(gameChat, msg){
+    gameChat.send("Начинается второй ход :smiling_imp:");
+    gameChat.send("Ща всех в мут кинем, и каждому по минуте дадим :wink:");
+    playersArr.forEach( player => {
+        mute(gameChat, player, true);
+    });
+    playersArr.forEach( player => {
+        mute(gameChat, player, false);
+        gameChat.send("Очередь игрока: "+player.username);
+        timer(60,msg,true);
+        setTimeout(()=>{
+            msg.delete();
+            mute(gameChat, player, true);
+        },60000);
+    });
 }
 
 function joinBot(msg)
@@ -98,11 +115,9 @@ function leaveСhannel(msg)
     msg.member.voice.channel.leave();
 }
 
-function mute(bot, msg, args)
+function mute(gameChat, player, choose)
 {
-    let userClient = msg.guild.member(playersArr[0]);
-    let voice = userClient.voice;
-    voice.setMute(true);
+    gameChat.guild.member(player).voice.setMute(choose);
 }
 
 function createRole (bot, msg, args){
@@ -161,9 +176,6 @@ let commandList = [
         // апокалипсис
     {name: "апокалипсис", out: apocalypse, about: "Ну тупа на тест"},
     {name: "я", out: auth, about: "Авторизация"},
-
-        // бот
-    {name: "mute", out: mute, about: "мут на игрока"},
 
         //создание роли
     {name: "create", out: createRole, about: "создание новой роли"},
