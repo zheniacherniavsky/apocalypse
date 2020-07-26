@@ -12,6 +12,16 @@
 
 `node bot.js`
 
+### Команды
+
+|Команда|Описание|
+|------|-----------|
+|апокалипсис|Начало игры|
+|example|example|
+|example|example|
+|example|example|
+|example|example|
+
 ### Сделано
 
   - Регистрация игроков
