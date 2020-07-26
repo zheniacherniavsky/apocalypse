@@ -2,30 +2,36 @@
 
 ![NODE.JS | DISCORD.JS](https://github.com/zheniacherniavsky/apocalypse/blob/master/img/icons.png) 
 
-### Установка
+### Installation
 
-Для запуска нужно установить *node.js*. В консоли переходим в папку с репозиторием и вписываем:
+You need to install * node.js *. In the console, go to the folder with the repository and enter:
 
 `npm install`
 
-После успешной установки:
+After successful installation:
 
 `node bot.js`
 
-### Сделано
+### Commands
 
-  - Регистрация игроков
-  - База данных для карточек
-  - Генератор карточек игроков
-  - Отправка карточек в ЛС 
-  - Таймер
-  - Mute ботом игроков
+|Command|Description|
+|-------|-----------|
+|апокалипсис|Beginning of the game|
 
-### Осталось сделать
+### Made
 
-  - Уровни игры
-  - Скрипт бонусных карточек
+  - Registration of players
+  - Card database
+  - Player card generator
+  - Sending cards to Direct Messages
+  - Timer
+  - Mute / Unmute
+
+### Left to do
+
+  - Game levels
+  - Bonus cards script
   
-### Рофл фотки
+### rofl
 
 ![NODE.JS | DISCORD.JS](https://github.com/zheniacherniavsky/apocalypse/blob/master/img/rofl1.jpg)
