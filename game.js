@@ -29,4 +29,4 @@ client.on('message', msg => {
     }
 });
 
-client.login('NzM1NDQ0OTkxODc0MTcwOTIx.XxgXNg.l1pJipDMPMfGtwoaNK0iObIQDU8');
+client.login('TOKEN TVOY');
