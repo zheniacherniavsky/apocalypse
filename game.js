@@ -72,7 +72,7 @@ client.on("message", (msg) => {
 });
 
 <<<<<<< Updated upstream
-client.login('NzM1NDQ0OTkxODc0MTcwOTIx.XxgXNg.l1pJipDMPMfGtwoaNK0iObIQDU8');
+client.login('TVOY TOKEN');
 =======
 // logs
 
@@ -80,5 +80,5 @@ client.on("message", (msg) => {
   console.log(msg.content);
 });
 
-client.login("NzM1NDQ0OTkxODc0MTcwOTIx.XxgXNg.l1pJipDMPMfGtwoaNK0iObIQDU8");
+client.login("TVOY TOKEN");
 >>>>>>> Stashed changes
